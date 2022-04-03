@@ -1,15 +1,26 @@
-var runningJob = false;
+var runningJob, successAudio, unstableAudio, failAudio, htmlContent;
 var played = 0;
-var successAudio = browser.extension.getURL('src/success.mp3');
-var unstableAudio = browser.extension.getURL('src/unstable.mp3');
-var failAudio = browser.extension.getURL('src/fail.mp3');
-var htmlContent = "";
+var i=0;
 var title = document.title;
 var waitTime = 3000; // ms à attendre entre chaque recherche dans la page
-var i=0;
 
-function playSound(mp3Url) {
-  	const audio = new Audio(mp3Url);
+
+if(navigator.userAgent.indexOf("Chrome") != -1 ) {
+	successAudio = chrome.runtime.getURL('src/success.mp3');
+	unstableAudio = chrome.runtime.getURL('src/unstable.mp3');
+	failAudio = chrome.runtime.getURL('src/fail.mp3');		
+} 
+else if(navigator.userAgent.indexOf("Firefox") != -1 ) {
+	successAudio = browser.runtime.getURL('src/success.mp3');
+	unstableAudio = browser.runtime.getURL('src/unstable.mp3');
+	failAudio = browser.runtime.getURL('src/fail.mp3');
+}
+else {
+	console.log("Browser is not supported")
+}
+
+function playSound(audioUrl) {
+  	const audio = new Audio(audioUrl);
   	audio.play();
 }
 

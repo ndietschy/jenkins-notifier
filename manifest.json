@@ -1,9 +1,9 @@
 {
-
-  "description": "Notify user with sound when Jenkins job is over",
-  "manifest_version": 2,
+  
   "name": "Jenkins jobs notifier",
+  "description": "Notify user with sound when Jenkins job is over",
   "version": "1.0",
+  "manifest_version": 2,
   "homepage_url": "https://github.com/ndietschy/jenkins-notifier.git",
   "icons": {
     "48": "icons/jenkins.png"
